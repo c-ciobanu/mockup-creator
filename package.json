@@ -36,10 +36,25 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/strongly-recommended",
       "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "prettier/prettier": [
+        "warn",
+        {
+          "arrowParens": "always",
+          "bracketSpacing": false,
+          "jsxBracketSameLine": false,
+          "printWidth": 120,
+          "semi": true,
+          "singleQuote": false,
+          "trailingComma": "none",
+          "useTabs": true,
+          "tabWidth": 2
+        }
+      ]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
