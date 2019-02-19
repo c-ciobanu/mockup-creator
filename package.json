@@ -53,7 +53,8 @@
           "useTabs": true,
           "tabWidth": 2
         }
-      ]
+      ],
+      "vue/require-default-prop": "off"
     },
     "parserOptions": {
       "parser": "babel-eslint"
