@@ -1,8 +1,10 @@
 <template>
-	<button :type="type" :disabled="disabled" v-on="onClick ? {click: onClick} : {}">{{ text }}</button>
+	<button :type="type" class="button" :disabled="disabled" @click="onClick">{{ text }}</button>
 </template>
 
 <script>
+import {noop} from "lodash";
+
 export default {
 	name: "Button",
 	props: {
@@ -15,13 +17,16 @@ export default {
 			required: true
 		},
 		disabled: Boolean,
-		onClick: Function
+		onClick: {
+			type: Function,
+			default: noop
+		}
 	}
 };
 </script>
 
 <style lang="scss" scoped>
-.v-button {
+.button {
 	text-transform: uppercase;
 	background-color: #e5e5e5;
 	width: 100%;
