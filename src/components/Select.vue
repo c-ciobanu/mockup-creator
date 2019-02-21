@@ -1,0 +1,134 @@
+<template>
+	<div class="select">
+		<label>{{ label }}</label>
+		<div>
+			<input
+				type="text"
+				:readonly="true"
+				placeholder="Select an option"
+				:value="value"
+				:required="required"
+				:disabled="disabled"
+				@click="handleClick"
+				@blur="handleBlur"
+			/>
+
+			<i :class="{open: isListVisible}" />
+
+			<transition name="ul-animation">
+				<ul v-if="isListVisible">
+					<li v-for="el in options" :key="el" @mousedown="handleItemClick">{{ el }}</li>
+				</ul>
+			</transition>
+		</div>
+	</div>
+</template>
+
+<script>
+export default {
+	name: "Select",
+	props: {
+		label: String,
+		required: Boolean,
+		disabled: Boolean,
+		options: {
+			type: Array,
+			required: true
+		},
+		onItemClick: Function
+	},
+	data: function() {
+		return {
+			isListVisible: false,
+			value: ""
+		};
+	},
+	methods: {
+		handleClick: function() {
+			this.isListVisible = !this.isListVisible;
+		},
+		handleBlur: function() {
+			if (this.isListVisible) {
+				this.isListVisible = false;
+			}
+		},
+		handleItemClick: function(e) {
+			this.value = e.target.innerHTML;
+
+			if (this.onItemClick) {
+				this.onItemClick(e.target.innerHTML);
+			}
+		}
+	}
+};
+</script>
+
+<style lang="scss" scoped>
+.select {
+	width: 100%;
+	margin-bottom: 20px;
+
+	label {
+		display: block;
+		margin-bottom: 3px;
+		font-size: 1.4rem;
+		color: rgba(#000000, 0.6);
+	}
+
+	.ul-animation {
+		&-enter-active,
+		&-leave-active {
+			transition: 0.5s all ease;
+		}
+
+		&-enter,
+		&-leave-to {
+			transform: translateY(-5px);
+			opacity: 0;
+		}
+	}
+
+	div {
+		position: relative;
+
+		input {
+			@extend %input;
+			cursor: pointer;
+		}
+
+		i {
+			@include icon($icon-angle-down);
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			transform: translateY(-50%);
+			pointer-events: none;
+			transition: 0.5s all ease;
+
+			&.open {
+				transform: rotate(180deg) translateY(50%);
+				transition: 0.5s all ease;
+			}
+		}
+
+		ul {
+			position: absolute;
+			top: calc(100% + 5px);
+			left: 0;
+			width: 100%;
+			border: 1px solid rgba(#000, 0.12);
+			border-radius: 3px;
+
+			li {
+				padding: 10px;
+				background-color: #fff;
+				cursor: pointer;
+
+				&:hover {
+					background-color: #f5f5f5;
+				}
+			}
+		}
+	}
+}
+</style>
