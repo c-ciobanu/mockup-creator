@@ -1,6 +1,6 @@
 <template>
 	<div class="select">
-		<label>{{ label }}</label>
+		<label v-if="label">{{ label }}</label>
 		<div>
 			<input
 				type="text"
@@ -66,7 +66,6 @@ export default {
 <style lang="scss" scoped>
 .select {
 	width: 100%;
-	margin-bottom: 20px;
 
 	label {
 		display: block;
