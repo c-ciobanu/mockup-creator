@@ -41,7 +41,7 @@
     ],
     "rules": {
       "prettier/prettier": [
-        "warn",
+        "error",
         {
           "arrowParens": "always",
           "bracketSpacing": false,
@@ -49,9 +49,9 @@
           "printWidth": 120,
           "semi": true,
           "singleQuote": false,
+          "tabWidth": 2,
           "trailingComma": "none",
-          "useTabs": true,
-          "tabWidth": 2
+          "useTabs": true
         }
       ],
       "vue/require-default-prop": "off"
