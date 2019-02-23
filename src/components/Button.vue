@@ -1,5 +1,5 @@
 <template>
-	<button :type="type" class="button" :disabled="disabled" @click="onClick">{{ text }}</button>
+	<button :type="type" class="button" :disabled="disabled" @click="onClick"><slot /></button>
 </template>
 
 <script>
@@ -11,10 +11,6 @@ export default {
 		type: {
 			type: String,
 			default: "button"
-		},
-		text: {
-			type: String,
-			required: true
 		},
 		disabled: Boolean,
 		onClick: {
