@@ -4,13 +4,14 @@
 		<div>
 			<input
 				type="text"
-				:readonly="true"
+				:name="name"
 				placeholder="Select an option"
 				:value="value"
 				:required="required"
 				:disabled="disabled"
 				@click="handleClick"
 				@blur="handleBlur"
+				readonly
 			/>
 
 			<i :class="{open: isListVisible}" />
@@ -29,6 +30,7 @@ export default {
 	name: "Select",
 	props: {
 		label: String,
+		name: String,
 		required: Boolean,
 		disabled: Boolean,
 		options: {
