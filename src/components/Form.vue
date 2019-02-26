@@ -13,7 +13,7 @@
 			/>
 
 			<Select
-				v-if="field.type === `select`"
+				v-else-if="field.type === `select`"
 				:key="index"
 				:label="field.label"
 				:name="field.name"
@@ -22,6 +22,8 @@
 				:options="field.options"
 				:onItemClick="(val) => callBack(field.name, val)"
 			/>
+
+			<Input v-else :key="index" label="undefined" disabled />
 		</template>
 
 		<Button type="submit">{{ submitButtonText }}</Button>
