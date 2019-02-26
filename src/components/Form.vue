@@ -63,4 +63,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.button {
+	margin-top: 20px;
+}
+</style>

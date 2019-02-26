@@ -3,25 +3,37 @@
 		<main>
 			<p>wip</p>
 		</main>
+
 		<aside>
-			<div class="component-selection">
-				<Select :options="[`component`, `component`, `component`]" />
-				<Button><i /></Button>
-			</div>
+			<Select :options="[`Button`, `Select`, `Input`]" :onItemClick="(val) => (selectedComponent = val)" />
+
+			<Form
+				v-if="selectedComponent"
+				:onSubmit="() => {}"
+				:fields="$options.componentsProps[selectedComponent]"
+				:callBack="() => {}"
+			/>
 		</aside>
 	</div>
 </template>
 
 <script>
 import Select from "@/components/Select.vue";
-import Button from "@/components/Button.vue";
+import Form from "@/components/Form.vue";
+import componentsJSON from "@/config/components.json";
 
 export default {
 	name: "Home",
 	components: {
 		Select,
-		Button
-	}
+		Form
+	},
+	data: function() {
+		return {
+			selectedComponent: undefined
+		};
+	},
+	componentsProps: componentsJSON
 };
 </script>
 
@@ -42,21 +54,10 @@ aside {
 	background-color: #ebf2ea;
 	border-left: 3px solid #d4dca9;
 
-	.component-selection {
-		display: flex;
-
-		.select {
-			width: calc(75% - 10px);
-			margin-right: 10px;
-		}
-
-		.button {
-			width: 25%;
-
-			i {
-				@include icon($icon-plus);
-			}
-		}
+	.form {
+		margin-top: 20px;
+		padding: 10px;
+		border: 2px solid #fff;
 	}
 }
 </style>
