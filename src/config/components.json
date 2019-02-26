@@ -1,0 +1,53 @@
+{
+	"Button": [
+		{
+			"label": "Type",
+			"name": "type",
+			"type": "input",
+			"inputType": "text",
+			"disabled": false,
+			"required": true,
+			"default": "button"
+		}
+	],
+	"Select": [
+		{
+			"label": "Label",
+			"name": "label",
+			"type": "input",
+			"inputType": "text",
+			"disabled": false,
+			"required": false,
+			"default": null
+		},
+		{
+			"label": "Options",
+			"name": "options",
+			"type": "array",
+			"inputType": null,
+			"disabled": false,
+			"required": true,
+			"default": null
+		}
+	],
+	"Input": [
+		{
+			"label": "Type",
+			"name": "type",
+			"type": "input",
+			"inputType": "text",
+			"disabled": false,
+			"required": false,
+			"default": "text"
+		},
+		{
+			"label": "Label",
+			"name": "label",
+			"type": "input",
+			"inputType": "text",
+			"disabled": false,
+			"required": false,
+			"default": null
+		}
+	]
+}
