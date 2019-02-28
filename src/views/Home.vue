@@ -5,11 +5,11 @@
 		</main>
 
 		<aside>
-			<Select :options="[`Button`, `Select`, `Input`]" :onItemClick="(val) => (selectedComponent = val)" />
+			<Select :options="[`Button`, `Select`, `Input`]" @change="(val) => (selectedComponent = val)" />
 
 			<Form
 				v-if="selectedComponent"
-				:onSubmit="() => {}"
+				@submit="() => {}"
 				:fields="$options.componentsProps[selectedComponent]"
 				:callBack="() => {}"
 			/>

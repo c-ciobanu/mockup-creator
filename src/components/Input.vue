@@ -1,13 +1,18 @@
 <template>
 	<div class="input">
 		<label>{{ label }}</label>
-		<input :type="type" :name="name" :required="required" :disabled="disabled" @blur="onBlur" @input="onChange" />
+		<input
+			:type="type"
+			:name="name"
+			:required="required"
+			:disabled="disabled"
+			@blur="$emit(`blur`)"
+			@input="$emit(`change`)"
+		/>
 	</div>
 </template>
 
 <script>
-import {noop} from "lodash";
-
 export default {
 	name: "Input",
 	props: {
@@ -18,15 +23,7 @@ export default {
 		name: String,
 		label: String,
 		required: Boolean,
-		disabled: Boolean,
-		onBlur: {
-			type: Function,
-			default: noop
-		},
-		onChange: {
-			type: Function,
-			default: noop
-		}
+		disabled: Boolean
 	}
 };
 </script>

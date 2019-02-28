@@ -36,8 +36,7 @@ export default {
 		options: {
 			type: Array,
 			required: true
-		},
-		onItemClick: Function
+		}
 	},
 	data: function() {
 		return {
@@ -57,9 +56,7 @@ export default {
 		handleItemClick: function(e) {
 			this.value = e.target.innerHTML;
 
-			if (this.onItemClick) {
-				this.onItemClick(e.target.innerHTML);
-			}
+			this.$emit("change", e.target.innerHTML);
 		}
 	}
 };

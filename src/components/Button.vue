@@ -1,10 +1,8 @@
 <template>
-	<button :type="type" class="button" :disabled="disabled" @click="onClick"><slot /></button>
+	<button :type="type" class="button" :disabled="disabled" @click="$emit(`click`)"><slot /></button>
 </template>
 
 <script>
-import {noop} from "lodash";
-
 export default {
 	name: "Button",
 	props: {
@@ -12,11 +10,7 @@ export default {
 			type: String,
 			default: "button"
 		},
-		disabled: Boolean,
-		onClick: {
-			type: Function,
-			default: noop
-		}
+		disabled: Boolean
 	}
 };
 </script>
