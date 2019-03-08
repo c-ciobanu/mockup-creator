@@ -3,11 +3,22 @@
 		{
 			"label": "Type",
 			"name": "type",
+			"type": "select",
+			"inputType": null,
+			"options": ["button", "submit", "reset"],
+			"disabled": false,
+			"required": false,
+			"default": "button"
+		},
+		{
+			"label": "Text",
+			"name": "text",
 			"type": "input",
 			"inputType": "text",
+			"options": [],
 			"disabled": false,
 			"required": true,
-			"default": "button"
+			"default": null
 		}
 	],
 	"Select": [
@@ -16,6 +27,7 @@
 			"name": "label",
 			"type": "input",
 			"inputType": "text",
+			"options": [],
 			"disabled": false,
 			"required": false,
 			"default": null
@@ -25,6 +37,7 @@
 			"name": "options",
 			"type": "array",
 			"inputType": null,
+			"options": [],
 			"disabled": false,
 			"required": true,
 			"default": null
@@ -36,6 +49,7 @@
 			"name": "type",
 			"type": "input",
 			"inputType": "text",
+			"options": [],
 			"disabled": false,
 			"required": false,
 			"default": "text"
@@ -45,6 +59,7 @@
 			"name": "label",
 			"type": "input",
 			"inputType": "text",
+			"options": [],
 			"disabled": false,
 			"required": false,
 			"default": null
