@@ -4,10 +4,11 @@
 		<input
 			:type="type"
 			:name="name"
+			:value="defaultValue"
 			:required="required"
 			:disabled="disabled"
 			@blur="$emit(`blur`)"
-			@input="$emit(`change`)"
+			@input="$emit(`change`, $event.target.value)"
 		/>
 	</div>
 </template>
@@ -18,10 +19,12 @@ export default {
 	props: {
 		type: {
 			type: String,
-			default: "text"
+			default: "text",
+			validator: (value) => ["email", "file", "number", "password", "tel", "text"].indexOf(value) !== -1
 		},
-		name: String,
 		label: String,
+		name: String,
+		defaultValue: String,
 		required: Boolean,
 		disabled: Boolean
 	}

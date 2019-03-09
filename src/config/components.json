@@ -47,9 +47,9 @@
 		{
 			"label": "Type",
 			"name": "type",
-			"type": "input",
-			"inputType": "text",
-			"options": [],
+			"type": "select",
+			"inputType": null,
+			"options": ["email", "file", "number", "password", "tel", "text"],
 			"disabled": false,
 			"required": false,
 			"default": "text"

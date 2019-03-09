@@ -17,7 +17,7 @@
 			<i :class="{open: isListVisible}" />
 
 			<transition name="ul-animation">
-				<ul v-if="isListVisible">
+				<ul v-if="isListVisible && options.length">
 					<li v-for="el in options" :key="el" @mousedown="handleItemClick">{{ el }}</li>
 				</ul>
 			</transition>
@@ -31,6 +31,7 @@ export default {
 	props: {
 		label: String,
 		name: String,
+		defaultValue: String,
 		required: Boolean,
 		disabled: Boolean,
 		options: {
@@ -41,7 +42,7 @@ export default {
 	data: function() {
 		return {
 			isListVisible: false,
-			value: ""
+			value: this.defaultValue ? this.defaultValue : ""
 		};
 	},
 	methods: {
@@ -111,6 +112,7 @@ export default {
 
 		ul {
 			position: absolute;
+			z-index: 10;
 			top: calc(100% + 5px);
 			left: 0;
 			width: 100%;

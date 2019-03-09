@@ -1,29 +1,31 @@
 <template>
 	<form class="form" @submit.prevent="$emit(`submit`)">
-		<template v-for="(field, index) in fields">
+		<template v-for="field in fields">
 			<Input
 				v-if="field.type === `input`"
-				:key="index"
+				:key="`form-input-${field.name}`"
 				:label="field.label"
 				:name="field.name"
 				:type="field.inputType"
 				:required="field.required"
 				:disabled="field.disabled"
-				@change="(e) => callBack(field.name, e.target.value)"
+				@change="(value) => callBack(field.name, value)"
+				:defaultValue="field.default"
 			/>
 
 			<Select
 				v-else-if="field.type === `select`"
-				:key="index"
+				:key="`form-select-${field.name}`"
 				:label="field.label"
 				:name="field.name"
 				:required="field.required"
 				:disabled="field.disabled"
 				:options="field.options"
 				@change="(val) => callBack(field.name, val)"
+				:defaultValue="field.default"
 			/>
 
-			<Input v-else :key="index" label="undefined" disabled />
+			<Input v-else :key="`form-default-${field.name}`" label="undefined" disabled />
 		</template>
 
 		<Button type="submit">{{ submitButtonText }}</Button>
