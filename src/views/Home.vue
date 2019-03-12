@@ -1,7 +1,12 @@
 <template>
 	<div class="home">
 		<main>
-			<p>wip</p>
+			<component
+				v-for="(component, index) in addedComponents"
+				:key="index"
+				:is="component.name"
+				v-bind="component.props"
+			/>
 		</main>
 
 		<aside>
@@ -9,29 +14,50 @@
 
 			<Form
 				v-if="selectedComponent"
-				@submit="() => {}"
+				:key="selectedComponent"
+				@submit="newComponent"
 				:fields="$options.componentsProps[selectedComponent]"
-				:callBack="() => {}"
+				:callBack="dataHandler"
 			/>
 		</aside>
 	</div>
 </template>
 
 <script>
-import Select from "@/components/Select.vue";
+import Button from "@/components/Button";
+import Select from "@/components/Select";
+import Input from "@/components/Input";
 import Form from "@/components/Form.vue";
+
 import componentsJSON from "@/config/components.json";
+
+import {mapState} from "vuex";
 
 export default {
 	name: "Home",
 	components: {
+		Button,
 		Select,
+		Input,
 		Form
 	},
 	data: function() {
 		return {
-			selectedComponent: undefined
+			selectedComponent: undefined,
+			propsToSend: {}
 		};
+	},
+	computed: mapState({
+		addedComponents: (state) => state.home.components
+	}),
+	methods: {
+		newComponent: function() {
+			this.$store.commit(`home/addComponent`, {name: this.selectedComponent, props: this.propsToSend});
+			this.propsToSend = {};
+		},
+		dataHandler: function(key, val) {
+			this.propsToSend[key] = val;
+		}
 	},
 	componentsProps: componentsJSON
 };
@@ -39,7 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 main {
-	width: 100%;
+	width: 80%;
 	margin-right: 20%;
 	padding: 20px 5%;
 }

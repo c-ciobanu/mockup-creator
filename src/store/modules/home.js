@@ -1,10 +1,16 @@
-const state = {};
+const state = {
+	components: []
+};
 
 const getters = {};
 
 const actions = {};
 
-const mutations = {};
+const mutations = {
+	addComponent(state, {name, props}) {
+		state.components.push({name, props});
+	}
+};
 
 export default {
 	namespaced: true,
