@@ -53,6 +53,7 @@ export default {
 	methods: {
 		newComponent: function() {
 			this.$store.commit(`home/addComponent`, {name: this.selectedComponent, props: this.propsToSend});
+			this.selectedComponent = undefined;
 			this.propsToSend = {};
 		},
 		dataHandler: function(key, val) {
