@@ -2,7 +2,14 @@
 	<div class="options">
 		<label v-if="label">{{ label }}</label>
 		<div class="input">
-			<input type="text" v-model="element" @keyup.enter="addElement" />
+			<input
+				type="text"
+				:name="name"
+				:required="required"
+				:disabled="disabled"
+				v-model="element"
+				@keyup.enter="addElement"
+			/>
 			<div @click="addElement"><i /></div>
 		</div>
 
@@ -19,12 +26,16 @@
 export default {
 	name: "Options",
 	props: {
-		label: String
+		label: String,
+		name: String,
+		defaultValue: String,
+		required: Boolean,
+		disabled: Boolean
 	},
 	data: function() {
 		return {
 			element: "",
-			options: []
+			options: this.defaultValue ? this.defaultValue : []
 		};
 	},
 	methods: {

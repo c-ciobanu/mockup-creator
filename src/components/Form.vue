@@ -25,6 +25,17 @@
 				:defaultValue="field.default"
 			/>
 
+			<Options
+				v-else-if="field.type === `options`"
+				:key="`form-options-${field.name}`"
+				:label="field.label"
+				:name="field.name"
+				:required="field.required"
+				:disabled="field.disabled"
+				@change="(val) => callBack(field.name, val)"
+				:defaultValue="field.default"
+			/>
+
 			<Input v-else :key="`form-default-${field.name}`" label="undefined" disabled />
 		</template>
 
@@ -36,13 +47,15 @@
 import Input from "@/components/Input";
 import Select from "@/components/Select";
 import Button from "@/components/Button";
+import Options from "@/components/Options";
 
 export default {
 	name: "Form",
 	components: {
 		Input,
 		Select,
-		Button
+		Button,
+		Options
 	},
 	props: {
 		callBack: {

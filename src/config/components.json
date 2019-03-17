@@ -35,7 +35,7 @@
 		{
 			"label": "Options",
 			"name": "options",
-			"type": "array",
+			"type": "options",
 			"inputType": null,
 			"options": [],
 			"disabled": false,
