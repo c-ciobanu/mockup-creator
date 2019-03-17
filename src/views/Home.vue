@@ -27,7 +27,7 @@
 import Button from "@/components/Button";
 import Select from "@/components/Select";
 import Input from "@/components/Input";
-import Form from "@/components/Form.vue";
+import Form from "@/components/Form";
 
 import componentsJSON from "@/config/components.json";
 

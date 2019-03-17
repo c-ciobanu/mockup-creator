@@ -1,7 +1,7 @@
 import {shallowMount} from "@vue/test-utils";
-import Button from "@/components/Button.vue";
+import Button from "@/components/Button";
 
-describe("Button.vue", () => {
+describe("Button", () => {
 	it("renders props.text when passed", () => {
 		const text = "submit";
 		const wrapper = shallowMount(Button, {
