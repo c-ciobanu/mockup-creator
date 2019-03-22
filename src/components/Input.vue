@@ -7,7 +7,7 @@
 			:value="defaultValue"
 			:required="required"
 			:disabled="disabled"
-			@blur="$emit(`blur`)"
+			@blur="$emit(`blur`, $event.target.value)"
 			@input="$emit(`change`, $event.target.value)"
 		/>
 	</div>
